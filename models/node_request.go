@@ -5,16 +5,22 @@ import (
 	"fmt"
 )
 
+type Links struct {
+	LinkLabel string `json:"linklabel"`
+	Url string `json:"url"`
+}
+
 
 type NodeRequest struct {
-	NodeID  string `json:"nodeid", validate:"required"`
-	Type string `json:"type", validate:"required"`
+	NodeType string `json:"nodetype", validate:"required"`
 	Label string `json:"label", validate:"required"`
-	EdgeID int16 `json:"edgeid", validate:"required"`
-	Source string `json:"source", validate:"required"`
-	Target	string `json:"target", validate:"required"`
+	Source string `json:"source". validate:"required"`
 	EdgeType string `json:"edgetype", validate:"required"`
 	Animated bool `json:"animated", validate:"required"`
+	Heading string `json:"heading"`
+	Description string `json:"description"`
+	Error   string `json:"error"`
+	Links   []Links `json:"links"`
 }
 
 func (node_details *NodeRequest) ValidateStruct() []*ErrorResponse{

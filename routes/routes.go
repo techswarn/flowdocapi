@@ -3,7 +3,6 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/techswarn/flowdocapi/handlers"
-	"github.com/techswarn/flowdocapi/middleware"
 )
 
 // SetupRoutes register routes based on functionalities
@@ -12,7 +11,8 @@ func SetupRoutes(app *fiber.App) {
 	var publicRoutes fiber.Router = app.Group("/api/v1")
 
 	//Health checks and other data
-	publicRoutes.Get("/", handlers.Addnodehandler)
-
-
+	publicRoutes.Post("/node", handlers.Addnodehandler)
+	publicRoutes.Get("/node", handlers.GetNodeshandler)
+	publicRoutes.Get("/edge", handlers.GetEdgeshandler)
+	publicRoutes.Get("/article", handlers.GetArticle)
 }
